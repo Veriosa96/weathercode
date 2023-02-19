@@ -1,11 +1,28 @@
 const inizialState = {
-    DataWeather :{
-        city: [],
-        weather: []
-    }
-}
-const mainReducers = (state = inizialState, action ) => {
-    
-}
+  DataWeather: {
+    city: "Roma",
+    cityWeather: {},
+    weather: [],
+  },
+};
+const mainReducers = (state = inizialState, action) => {
+  switch (action.type) {
+    case "ADD_CITY":
+      return {
+        ...state,
+        city:action.payload,
+      };
 
-export default mainReducers
+      case "CITY_WEATHER":
+        return {
+            ...state,
+            cityWeather: action.payload,
+        };
+
+    default: 
+      return state;
+
+  }
+};
+
+export default mainReducers;
